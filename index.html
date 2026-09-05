@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generador de contraseñas seguras y personalizables.">
+  <title>Generador de contraseñas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="intro">
+      <h1>Generador de contraseñas</h1>
+      <p>Crea una contraseña segura y personalizada.</p>
+    </section>
+
+    <section class="generator-card" aria-labelledby="generator-title">
+      <div class="card-header">
+        <h2 id="generator-title">Nueva contraseña</h2>
+      </div>
+
+      <div class="password-box">
+        <output id="password" aria-live="polite"></output>
+        <button id="copyButton" class="icon-button" type="button" aria-label="Copiar contraseña" title="Copiar contraseña">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="8" y="8" width="11" height="11" rx="2"></rect>
+            <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="strength-row">
+        <span>Seguridad</span>
+        <div class="strength-track" aria-hidden="true"><i id="strengthBar"></i></div>
+        <strong id="strengthLabel">Alta</strong>
+      </div>
+
+      <div class="controls">
+        <div class="length-heading">
+          <label for="length">Longitud</label>
+          <output id="lengthValue" for="length">16</output>
+        </div>
+        <input id="length" type="range" min="4" max="64" value="16">
+
+        <fieldset>
+          <legend>Incluir caracteres</legend>
+          <div class="options-grid">
+            <label class="option">
+              <span><b>ABC</b> Mayúsculas</span>
+              <input id="uppercase" type="checkbox" checked>
+              <i aria-hidden="true"></i>
+            </label>
+            <label class="option">
+              <span><b>abc</b> Minúsculas</span>
+              <input id="lowercase" type="checkbox" checked>
+              <i aria-hidden="true"></i>
+            </label>
+            <label class="option">
+              <span><b>123</b> Números</span>
+              <input id="numbers" type="checkbox" checked>
+              <i aria-hidden="true"></i>
+            </label>
+            <label class="option">
+              <span><b>#?!</b> Símbolos</span>
+              <input id="symbols" type="checkbox" checked>
+              <i aria-hidden="true"></i>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+
+      <p id="errorMessage" class="error-message" role="alert"></p>
+      <button id="generateButton" class="generate-button" type="button">
+        Generar nueva contraseña
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 11a8.1 8.1 0 1 0-2.3 5.7"></path>
+          <path d="M20 4v7h-7"></path>
+        </svg>
+      </button>
+    </section>
+  </main>
+
+  <div class="author-mark" aria-label="Creado por Leonardo Garcia Flores">
+    Creado por <strong>Leonardo Garcia Flores</strong>
+  </div>
+
+  <div id="toast" class="toast" role="status">Contraseña copiada</div>
+  <script src="script.js"></script>
+</body>
+</html>

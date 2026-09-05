@@ -1,0 +1,362 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  color-scheme: dark;
+  --bg: #101114;
+  --panel: #181a1e;
+  --panel-soft: #202228;
+  --border: #303239;
+  --text: #f1f1f2;
+  --muted: #989ba3;
+  --accent: #e8e9eb;
+  --accent-dark: #15161a;
+  --danger: #ff7474;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.page-shell {
+  width: min(620px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: clamp(3rem, 10vh, 6rem) 0;
+}
+
+.intro {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.intro h1 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.8rem, 5vw, 2.35rem);
+  line-height: 1.2;
+  letter-spacing: -0.04em;
+}
+
+.intro > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.generator-card {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--panel);
+}
+
+.strength-row,
+.length-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.password-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 82px;
+  margin-top: 2rem;
+  padding: 1rem 1.1rem 1rem 1.4rem;
+  border: 1px solid #343a40;
+  border-radius: 14px;
+  background: #0c0f11;
+}
+
+#password {
+  overflow: hidden;
+  flex: 1;
+  font-family: "DM Mono", monospace;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  letter-spacing: 0.06em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.icon-button {
+  display: grid;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--panel-soft);
+  color: var(--text);
+  cursor: pointer;
+  place-items: center;
+  transition: 160ms ease;
+}
+
+.icon-button:hover {
+  border-color: #60636c;
+  background: #292c32;
+}
+
+.icon-button svg,
+.generate-button svg {
+  width: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.strength-row {
+  gap: 0.8rem;
+  padding: 1rem 0 1.6rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.strength-row strong {
+  min-width: 42px;
+  color: var(--accent);
+  text-align: right;
+}
+
+.strength-track {
+  overflow: hidden;
+  flex: 1;
+  height: 4px;
+  border-radius: 20px;
+  background: #292e32;
+}
+
+.strength-track i {
+  display: block;
+  width: 80%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: 200ms ease;
+}
+
+.controls {
+  padding-top: 1.5rem;
+}
+
+.length-heading label,
+fieldset legend {
+  color: #c9ced2;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+#lengthValue {
+  min-width: 42px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  background: #292b31;
+  color: var(--accent);
+  font-family: "DM Mono", monospace;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 1.1rem 0 1.8rem;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  cursor: pointer;
+  transition: border-color 160ms ease;
+}
+
+.option:hover {
+  border-color: #444c53;
+}
+
+.option span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.option b {
+  color: var(--text);
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.option input {
+  position: absolute;
+  opacity: 0;
+}
+
+.option i {
+  position: relative;
+  width: 31px;
+  height: 17px;
+  border-radius: 20px;
+  background: #363c41;
+  transition: 180ms ease;
+}
+
+.option i::after {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #8b9298;
+  content: "";
+  transition: 180ms ease;
+}
+
+.option input:checked + i {
+  background: var(--accent);
+}
+
+.option input:checked + i::after {
+  left: 17px;
+  background: var(--accent-dark);
+}
+
+.error-message {
+  min-height: 18px;
+  margin: 0.7rem 0 0;
+  color: var(--danger);
+  font-size: 0.75rem;
+}
+
+.generate-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 55px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--accent);
+  color: var(--accent-dark);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 160ms ease;
+}
+
+.generate-button:hover {
+  background: #ffffff;
+}
+
+.generate-button:active {
+  background: #d5d6d8;
+}
+
+.toast {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: 200ms ease;
+}
+
+.toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.author-mark {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  color: #858891;
+  font-size: 0.85rem;
+  user-select: none;
+}
+
+.author-mark strong {
+  color: #c7c9ce;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .page-shell {
+    padding-top: 4rem;
+  }
+
+  .intro {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .page-shell {
+    width: min(100% - 1.5rem, 1100px);
+    padding-top: 2.5rem;
+  }
+
+  .generator-card {
+    border-radius: 18px;
+  }
+
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .author-mark {
+    position: static;
+    justify-content: center;
+    margin: -1.5rem 0 1.5rem;
+  }
+}
